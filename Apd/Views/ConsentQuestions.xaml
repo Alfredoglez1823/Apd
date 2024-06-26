@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Apd.Views.ConsentQuestions"
+             Title="Aviso de Privacidad">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+
+            <!-- Aviso de Privacidad Completo -->
+            <Label Text="Estimado usuario,
+
+Valoramos su privacidad y la protección de sus datos personales. Al utilizar nuestra aplicación, se le presentará un cuestionario. Usted tiene la opción de permitirnos recopilar y almacenar sus respuestas en nuestra base de datos. Si elige no permitirnos recopilar sus datos, sus respuestas se guardarán únicamente en su dispositivo de manera segura y no serán accesibles por nosotros.
+
+Si opta por permitirnos recopilar sus datos, se utilizarán exclusivamente para los siguientes propósitos:
+
+Mejorar la calidad y eficacia de nuestra aplicación.
+Proporcionarle un seguimiento personalizado y guardar su progreso para futuras sesiones.
+Le aseguramos que:
+
+Sus datos personales no serán compartidos con terceros.
+Serán tratados con la máxima confidencialidad y seguridad.
+Este consentimiento es revocable en cualquier momento y usted tiene el derecho de acceder, rectificar o cancelar sus datos personales, así como de oponerse a su tratamiento o solicitar su limitación.
+
+Para más información sobre cómo ejercer estos derechos o si tiene alguna pregunta sobre cómo almacenamos y utilizamos sus datos personales, por favor consulte nuestra política completa de privacidad dentro de la aplicación o contáctenos a través de contacto@dovahlabs.com .
+
+Al utilizar nuestra aplicación, usted acepta este aviso y reconoce que ha leído y comprendido nuestros términos y condiciones."
+                   VerticalOptions="Start" 
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Botón para regresar -->
+            <Button Text="Regresar"
+        Clicked="OnBackButtonClicked"
+        VerticalOptions="End" 
+        HorizontalOptions="FillAndExpand" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

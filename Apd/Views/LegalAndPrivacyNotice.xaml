@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Apd.Views.LegalAndPrivacyNotice"
+             Title="LegalAndPrivacyNotice">
+    <ScrollView>
+    <VerticalStackLayout>
+        <!-- Aviso de Privacidad Completo -->
+        <Label Text="Bienvenida:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text="Bienvenido a Miri, una plataforma dedicada a brindar apoyo y herramientas a personas que enfrentan desafíos relacionados con la depresión y la ansiedad. Nuestra misión es ofrecer un entorno seguro y privado donde los usuarios puedan explorar meditaciones guiadas, actividades interactivas y una variedad de recursos enfocados en fomentar la salud emocional y mental."
+                   VerticalOptions="Start" 
+                   HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <Label Text="Limitación de Responsabilidad:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text="Miri se ofrece como un complemento a las estrategias de bienestar personal y no reemplaza el tratamiento médico profesional. Los contenidos y recomendaciones presentados están diseñados para servir como apoyo emocional general y no deben ser considerados como consejos médicos, diagnósticos o tratamientos. En caso de emergencia o si requiere atención médica especializada, le instamos a contactar a un profesional de la salud calificado inmediatamente."
+           VerticalOptions="Start" 
+           HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <Label Text="Clarificación sobre la Naturaleza de la Aplicación:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text=" Es importante destacar que Miri no pretende ser un reemplazo o equivalente a la atención médica profesional, terapia psicológica o cualquier otra forma de asistencia profesional. La aplicación no debe ser utilizada como la única herramienta para manejar condiciones de salud mental. Instamos a los usuarios a buscar orientación profesional para recibir un diagnóstico adecuado y tratamiento personalizado."
+   VerticalOptions="Start" 
+   HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <Label Text="Exclusión de Garantías:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text="Miri proporciona recursos y contenido con el propósito de apoyar a los usuarios en su camino hacia el bienestar emocional. Sin embargo, no garantizamos que el uso de la aplicación produzca un alivio específico o mejora en la condición de salud mental del usuario. La eficacia del contenido puede variar ampliamente entre individuos debido a factores personales y circunstancias únicas."
+VerticalOptions="Start" 
+HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <Label Text="Privacidad y Protección de Datos:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text="Nos comprometemos firmemente con la protección de la privacidad de nuestros usuarios. La información personal recabada por Miri será utilizada exclusivamente para enriquecer su experiencia dentro de la aplicación y no será divulgada a terceros sin su autorización explícita. Todos los usuarios tienen el derecho a retirar su consentimiento, rechazar que almacenemos ciertos datos y solicitar la eliminación de su información personal en cualquier momento."
+VerticalOptions="Start" 
+HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <Label Text="Consentimiento del Usuario:" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label></Label>
+
+            <Label Text="Al hacer uso de Miri, usted confirma que ha leído, entendido y aceptado los términos expuestos en este aviso legal y de privacidad. Usted acuerda utilizar Miri bajo su propia discreción y responsabilidad."
+VerticalOptions="Start" 
+HorizontalOptions="FillAndExpand" />
+
+            <Label></Label>
+            <Label></Label>
+
+            <!-- Botón para regresar -->
+        <Button Text="Acepto"
+        Clicked="AcceptButtonClicked"
+        VerticalOptions="End" 
+        HorizontalOptions="FillAndExpand" />
+        
+        <Label></Label>
+            <Label></Label>
+
+
+        </VerticalStackLayout>
+</ScrollView>
+</ContentPage>

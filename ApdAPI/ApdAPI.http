@@ -1,0 +1,6 @@
+@ApdAPI_HostAddress = http://localhost:5073
+
+GET {{ApdAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

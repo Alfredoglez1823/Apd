@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Apd.WelcomePage"
+             Title="WelcomePage">
+    <VerticalStackLayout>
+        <Label x:Name="titleLabel" Text="Choose your language" FontSize="Micro"/>
+        <Picker x:Name="languagePicker">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>English</x:String>
+                    <x:String>Español</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry x:Name="emailEntry" Placeholder="Email"/>
+        <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True"/>
+        <Entry x:Name="confirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True"/>
+        <Button x:Name="submitButton" Text="Create Account" Clicked="OnCreateAccountClicked"/>
+        <Button x:Name="toggleButton" Text="Already have an account?" Clicked="OnToggleButtonClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

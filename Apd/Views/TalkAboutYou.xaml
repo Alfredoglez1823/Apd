@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Apd.Views.TalkAboutYou"
+             Title="Cuestionario Semanal">
+    <ScrollView>
+    <VerticalStackLayout>
+            
+            <!-- I. Información Personal -->
+            <Label Text="Para ofrecerte el mejor apoyo posible, te pedimos que respondas a cada pregunta pensando en cómo te has sentido durante la última semana, incluyendo el día de hoy." FontAttributes="None" FontSize="Small"/>
+            <Label Text="Tu honestidad es esencial para que podamos ofrecerte herramientas y recursos que realmente te ayuden." FontAttributes="None" FontSize="Small"/>
+            <Label Text="Puedes estar seguro de que tu información es confidencial." FontAttributes="None" FontSize="Small"/>
+            <Label></Label>
+            <Label></Label>
+            <Label Text="Leer Aviso de Privacidad Completo"
+       
+       x:Name="ConsentLabel" 
+       FontSize="14" 
+       TextColor="#007bff">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ConsentLabel_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Autoriza la recopilación de sus respuestas para mejorar la app a futuro?" FontSize="14"></Label>
+            <Label Text="Esto tambien le ayudara para tener sus datos en la app si cambia de dispositivo" FontSize="14"></Label>
+        
+
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Acepto"/>
+                <CheckBox x:Name="ConsentCheckBox" CheckedChanged="ConsentChange"/>
+            </StackLayout>
+            <Label></Label>
+
+            <Label Text="I. Información Personal" FontAttributes="Bold" FontSize="Small"/>
+            <Label Text="1.1 Nombre (opcional):"/>
+            <Entry x:Name="NameEntry" Placeholder="Nombre"/>
+        
+
+            <Label Text="1.2 Edad:"/>
+            <Entry x:Name="AgeEntry" Keyboard="Numeric" Placeholder="Edad"/>
+
+            <Label Text="1.3 Género:"/>
+            <Picker x:Name="GenderPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Masculino</x:String>
+                        <x:String>Femenino</x:String>
+                        <x:String>Otro</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="1.4 ¿Has sido diagnosticado/a con depresión o ansiedad por un profesional de la salud mental?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="DiagnosedYesCheckBox" CheckedChanged="OnDiagnosedYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="DiagnosedNoCheckBox" CheckedChanged="OnDiagnosedNoCheckBoxCheckedChanged"/>
+            </StackLayout>
+
+            <Label Text="1.4Q ¿Qué diagnóstico específico recibiste?" x:Name="DiagnosisQuestionLabel" IsVisible="False"/>
+            <Entry x:Name="DiagnosisEntry" IsVisible="False" Placeholder="Diagnóstico específico"/>
+
+            <Label Text="1.5 Si has sido diagnosticado/a, ¿estás actualmente en tratamiento?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="TreatmentYesCheckBox" CheckedChanged="OnTreatmentYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="TreatmentNoCheckBox" CheckedChanged="OnTreatmentNoCheckBoxCheckedChanged"/>
+            </StackLayout>
+
+            <Label Text="1.5Q ¿Qué tipo de tratamiento recibes? (medicación, terapia, etc.)" x:Name="TreatmentQuestionLabel" IsVisible="False"/>
+            <Entry x:Name="TreatmentEntry" IsVisible="False" Placeholder="Tipo de tratamiento"/>
+
+        
+        <!-- AQUI EN MEDIO PON LAS PREGUNTAS FALTANTES CHATGPT-->
+            <!-- II. Evaluación del Estado Emocional -->
+            <Label Text="II. Evaluación del Estado Emocional" FontAttributes="Bold" FontSize="Small"/>
+
+            <Label Text="Tristeza"/>
+            <Picker x:Name="TristezaPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No me siento triste.</x:String>
+                        <x:String>Me siento triste parte del tiempo.</x:String>
+                        <x:String>Estoy triste todo el tiempo.</x:String>
+                        <x:String>Estoy tan triste o soy tan infeliz que no puedo soportarlo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Pesimismo"/>
+            <Picker x:Name="PesimismoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No estoy desalentado respecto de mi futuro.</x:String>
+                        <x:String>Me siento más desalentado respecto de mi futuro que lo que solía estarlo.</x:String>
+                        <x:String>No espero que las cosas mejoren para mi.</x:String>
+                        <x:String>Siento que no hay esperanza para mi futuro y que solo puede empeorar.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Fracaso"/>
+            <Picker x:Name="FracasoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No me siento como un fracasado.</x:String>
+                        <x:String>He fracasado más de lo que hubiera debido fracasar en mi vida.</x:String>
+                        <x:String>Cuando miro hacia atrás en mi vida, veo muchos fracasos.</x:String>
+                        <x:String>Siento que como persona soy un fracaso total.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Pérdida de Placer"/>
+            <Picker x:Name="PerdidaDePlacerPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Obtengo tanto placer como siempre por las cosas de las cuales disfruto hacer.</x:String>
+                        <x:String>No disfruto tanto de las cosas como solía hacerlo.</x:String>
+                        <x:String>Obtengo muy poco placer de las cosas con las cuales solía disfrutar mucho antes.</x:String>
+                        <x:String>Ya no obtengo ningún placer por las cosas con las cuales solía disfrutar.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Sentimientos de Culpa"/>
+            <Picker x:Name="SentimientosDeCulpaPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No me siento particularmente culpable acerca del pasado ni nada en especial recientemente hablando.</x:String>
+                        <x:String>Me siento culpable respecto de varias cosas que he hecho o que debería haber hecho.</x:String>
+                        <x:String>Me siento bastante culpable la mayor parte del tiempo.</x:String>
+                        <x:String>Me siento culpable todo el tiempo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Sentimientos de Castigo -->
+            <Label Text="Sentimientos de Castigo"/>
+            <Picker x:Name="SentimientosDeCastigoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No siento que estoy siendo castigado.</x:String>
+                        <x:String>Siento que tal vez pueda ser castigado.</x:String>
+                        <x:String>Espero ser castigado.</x:String>
+                        <x:String>Siento que estoy siendo castigado.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Disconformidad con Uno Mismo -->
+            <Label Text="Disconformidad con Uno Mismo"/>
+            <Picker x:Name="DisconformidadConUnoMismoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Me siento acerca de mí mismo como siempre.</x:String>
+                        <x:String>He perdido la confianza en mí mismo.</x:String>
+                        <x:String>Estoy decepcionado conmigo mismo.</x:String>
+                        <x:String>No me gusto a mí mismo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Autocrítica -->
+            <Label Text="Autocrítica"/>
+            <Picker x:Name="AutocriticaPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No me critico ni me culpo más de lo habitual.</x:String>
+                        <x:String>Estoy más crítico conmigo mismo de lo que solía serlo antes.</x:String>
+                        <x:String>Me critico a mí mismo por todos mis errores.</x:String>
+                        <x:String>Me culpo a mí mismo por todo lo malo que sucede.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Pensamientos o Deseos Suicidas -->
+            <Label Text="Pensamientos o Deseos Suicidas"/>
+            <Picker x:Name="PensamientosDeseosSuicidasPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No tengo ningún pensamiento de querer dejar de vivir.</x:String>
+                        <x:String>He tenido pensamientos de querer dejar de vivir, pero no lo haría.</x:String>
+                        <x:String>Querría dejar de vivir.</x:String>
+                        <x:String>Dejaría de vivir si tuviera la oportunidad de hacerlo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Llanto -->
+            <Label Text="Llanto"/>
+            <Picker x:Name="LlantoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No lloro más de lo que solía hacerlo.</x:String>
+                        <x:String>Lloro más de lo que solía hacerlo.</x:String>
+                        <x:String>Lloro por cualquier pequeñez.</x:String>
+                        <x:String>Siento ganas de llorar pero no puedo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Agitación -->
+            <Label Text="Agitación"/>
+            <Picker x:Name="AgitacionPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No estoy más inquieto o tenso que lo habitual.</x:String>
+                        <x:String>Me siento más inquieto o tenso que lo habitual.</x:String>
+                        <x:String>Estoy tan inquieto o agitado que me es difícil quedarme quieto.</x:String>
+                        <x:String>Estoy tan inquieto o agitado que tengo que estar siempre en movimiento o haciendo algo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Pérdida de Interés -->
+            <Label Text="Pérdida de Interés"/>
+            <Picker x:Name="PerdidaDeInteresPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No he perdido el interés en otras actividades o personas.</x:String>
+                        <x:String>Estoy menos interesado que antes en otras personas o cosas.</x:String>
+                        <x:String>He perdido casi todo el interés en otras personas o cosas.</x:String>
+                        <x:String>Me es difícil interesarme por algo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Indecisión -->
+            <Label Text="Indecisión"/>
+            <Picker x:Name="IndecisionPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Tomo mis decisiones tan bien como siempre.</x:String>
+                        <x:String>Me resulta más difícil que de costumbre tomar decisiones.</x:String>
+                        <x:String>Encuentro mucha mas dificultad que antes para tomar decisiones.</x:String>
+                        <x:String>Tengo problemas para tomar cualquier decisión.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Desvalorización -->
+            <Label Text="Desvalorización"/>
+            <Picker x:Name="DesvalorizacionPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No siento que yo no sea valioso.</x:String>
+                        <x:String>No me considero a mí mismo tan valioso y útil como solía considerarme.</x:String>
+                        <x:String>Me siento menos valioso cuando me comparo con otros.</x:String>
+                        <x:String>Siento que no valgo nada.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Pérdida de Energía -->
+            <Label Text="Pérdida de Energía"/>
+            <Picker x:Name="PerdidaDeEnergiaPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Tengo tanta energía como siempre.</x:String>
+                        <x:String>Tengo menos energía que la que solía tener.</x:String>
+                        <x:String>No tengo suficiente energía para hacer demasiado.</x:String>
+                        <x:String>No tengo energía suficiente para hacer nada.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label></Label>
+            <Label></Label>
+
+            <!-- Cambios en los Hábitos de Sueño -->
+            <Label Text="- Cambios en los Hábitos de Sueño"/>
+            <StackLayout>
+                
+                <Label Text="No he experimentado ningún cambio en mis hábitos de sueño."/>
+                <CheckBox x:Name="NoChangesInSleepCheckBox" CheckedChanged="NoChangesInSleepChange"/>
+
+                
+                <Label Text="Duermo un poco más que lo habitual."/>
+                <CheckBox x:Name="SleepMoreThanUsualCheckBox" CheckedChanged="SleepMoreThanUsualChange"/>
+
+                
+                <Label Text="Duermo un poco menos que lo habitual."/>
+                <CheckBox x:Name="SleepLessThanUsualCheckBox" CheckedChanged="SleepLessThanUsualChange"/>
+
+                
+                <Label Text="Duermo mucho más que lo habitual."/>
+                <CheckBox x:Name="SleepMuchMoreThanUsualCheckBox" CheckedChanged="SleepMuchMoreThanUsualChange"/>
+
+                
+                <Label Text="Duermo mucho menos que lo habitual."/>
+                <CheckBox x:Name="SleepMuchLessThanUsualCheckBox" CheckedChanged="SleepMuchLessThanUsualChange"/>
+
+                
+                <Label Text="Duermo la mayor parte del día."/>
+                <CheckBox x:Name="SleepMostOfTheDayCheckBox" CheckedChanged="SleepMostOfTheDayChange"/>
+
+                
+                <Label Text="Me despierto 1-2 horas más temprano y no puedo volver a dormirme."/>
+                <CheckBox x:Name="WakeUpEarlyCheckBox" CheckedChanged="WakeUpEarlyChange"/>
+            </StackLayout>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+
+            <!-- Irritabilidad -->
+            <Label Text="Irritabilidad"/>
+            <Picker x:Name="IrritabilidadPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No estoy más irritable que lo habitual.</x:String>
+                        <x:String>Estoy un poco más irritable que lo habitual.</x:String>
+                        <x:String>Estoy mucho más irritable que lo habitual.</x:String>
+                        <x:String>Estoy irritable todo el tiempo.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label></Label>
+            <Label></Label>
+
+            <!-- Cambios en el Apetito -->
+            <Label Text="- Cambios en el Apetito"/>
+            <StackLayout>
+                
+                <Label Text="No he experimentado ningun cambio en mi apetito."/>
+                <CheckBox x:Name="NoChangesInAppetiteCheckBox" CheckedChanged="NoChangesInAppetiteChange"/>
+
+                
+                <Label Text="Mi apetito es un poco menor que lo habitual."/>
+                <CheckBox x:Name="AppetiteSlightlyDecreasedCheckBox" CheckedChanged="AppetiteSlightlyDecreasedChange"/>
+
+                
+                <Label Text="Mi apetito es un poco mayor que lo habitual."/>
+                <CheckBox x:Name="AppetiteSlightlyIncreasedCheckBox" CheckedChanged="AppetiteSlightlyIncreasedChange"/>
+
+                
+                <Label Text="Mi apetito es mucho menor que antes."/>
+                <CheckBox x:Name="AppetiteMuchDecreasedCheckBox" CheckedChanged="AppetiteMuchDecreasedChange"/>
+
+                
+                <Label Text="Mi apetito es mucho mayor que lo habitual."/>
+                <CheckBox x:Name="AppetiteMuchIncreasedCheckBox" CheckedChanged="AppetiteMuchIncreasedChange"/>
+
+                
+                <Label Text="No tengo apetito Nada."/>
+                <CheckBox x:Name="NoAppetiteAtAllCheckBox" CheckedChanged="NoAppetiteAtAllChange"/>
+
+                
+                <Label Text="Quiero comer todo el tiempo."/>
+                <CheckBox x:Name="WantToEatAllTheTimeCheckBox" CheckedChanged="WantToEatAllTheTimeChange"/>
+            </StackLayout>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+
+            <!-- Dificultad de Concentracion -->
+            <Label Text="Dificultad de Concentracion"/>
+            <Picker x:Name="DificultadDeConcentracionPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Puedo concentrarme tan bien como siempre.</x:String>
+                        <x:String>No puedo concentrarme tan bien como habitualmente.</x:String>
+                        <x:String>Me es dificil mantener la mente en algo por mucho tiempo.</x:String>
+                        <x:String>Encuentro que no puedo concentrarme en nada.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Cansancio o Fatiga -->
+            <Label Text="Cansancio o Fatiga"/>
+            <Picker x:Name="CansancioOFatigaPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No me siento cansado ni fatigado más de lo habitual.</x:String>
+                        <x:String>Me fatigo o me canso mas facilmente que lo habitual.</x:String>
+                        <x:String>Estoy muy fatigado o cansado para hacer muchas de las cosas que solia hacer.</x:String>
+                        <x:String>Estoy demasiado fatigado o cansado para hacer la mayoria de las cosas que solia hacer.</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Pérdida de Interés en el Sexo -->
+            <Label Text="Pérdida de interés o deseo por las cosas que te gustan"/>
+            <Picker x:Name="PerdidaDeInteresEnElDeseoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No he notado ningún cambio reciente en mi interés o deseo por las cosas que me gustan.</x:String>
+                        <x:String>Estoy menos interesado o motivado por las cosas que me gustan de lo que solía estarlo.</x:String>
+                        <x:String>Ahora estoy mucho menos interesado o motivado por las cosas que me gustan.</x:String>
+                        <x:String>He perdido completamente el interés o deseo por las cosas que me gustan..</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+
+            <!--                   -->
+            <StackLayout>
+
+                <Label Text="2.10 Describe con tus propias palabras cómo te has sentido emocionalmente en las últimas semanas:"/>
+                <Editor x:Name="EmotionalDescriptionEditor" Placeholder="Descripción emocional"/>
+
+                <Label Text="2.12 ¿Hay alguna situación o evento en particular que esté afectando tu estado emocional en este momento?"/>
+                <Editor x:Name="CurrentSituationEditor" Placeholder="Descripción de la situación"/>
+            </StackLayout>
+
+            
+
+            <Label Text="3.8 Otros: "/>
+            <Entry x:Name="OtherPhysicalSymptomsEntry" Placeholder="Otros síntomas físicos"/>
+
+            
+            <Label Text="IV. Antecedentes y Factores de Riesgo" FontAttributes="Bold" FontSize="Small"/>
+            <Label Text="4.1 ¿Hay antecedentes de depresión o ansiedad en tu familia?"/>
+            <Picker x:Name="SupportResourcesPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Sí</x:String>
+                        <x:String>No</x:String>
+                        <x:String>No lo sé</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="4.2 ¿Estás tomando algún medicamento actualmente? (Incluye medicamentos con receta, de venta libre y suplementos)"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="CurrentMedicationYesCheckBox" CheckedChanged="OnCurrentMedicationYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="CurrentMedicationNoCheckBox" CheckedChanged="OnCurrentMedicationNoCheckBoxCheckedChanged"/>
+            </StackLayout>
+        
+            <Label Text="4.2Q ¿Cuáles?" x:Name="CurrentMedicationDescriptionLabel" IsVisible="False"/>
+            <Entry x:Name="CurrentMedicationDescriptionEntry" IsVisible="False" Placeholder="Descripción de medicamentos"/>
+
+            <Label Text="4.3 ¿Consumes alcohol o drogas recreativas?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="SubstanceUseYesCheckBox" CheckedChanged="OnSubstanceUseYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="SubstanceUseNoCheckBox" CheckedChanged="OnSubstanceUseNoCheckBoxCheckedChanged"/>
+            </StackLayout>
+
+            <Label Text="4.3Q1 ¿Con qué frecuencia?" x:Name="SubstanceUseFrequencyLabel" IsVisible="False"/>
+            <Entry x:Name="SubstanceUseFrequencyEntry" IsVisible="False" Placeholder="Frecuencia de uso"/>
+
+            <Label Text="4.3Q2 ¿Qué tipo de sustancias consumes?" x:Name="SubstanceUseTypeLabel" IsVisible="False"/>
+            <Entry x:Name="SubstanceUseTypeEntry" IsVisible="False" Placeholder="Tipos de sustancias"/>
+
+            <Label Text="4.4 ¿Hay algún otro aspecto de tu salud física o mental que te preocupe?"/>
+            <Entry x:Name="OtherHealthConcernsEntry" Placeholder="Preocupaciones de salud"/>
+
+            <!-- V. Apoyo y Recursos -->
+            <Label Text="V. Apoyo y Recursos" FontAttributes="Bold" FontSize="Small"/>
+            <Label Text="5.1 ¿Tienes amigos o familiares cercanos en quienes confías y con quienes puedes hablar?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="TrustedFriendsFamilyYesCheckBox" CheckedChanged="OnTrustedFriendsFamilyYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="TrustedFriendsFamilyNoCheckBox" CheckedChanged="OnTrustedFriendsFamilyNoCheckBoxCheckedChanged"/>
+            </StackLayout>
+            <Label Text="5.1Q ¿Te sientes cómodo/a hablando con ellos sobre tus problemas emocionales?" x:Name="ComfortableTalkingProblemsLabel" IsVisible="False"/>
+            <StackLayout Orientation="Horizontal" x:Name="ComfortableTalkingProblemsEntry" IsVisible="False">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="ComfortableTalkingProblemsYCh" CheckedChanged="ConfortableYesChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="ComfortableTalkingProblemsNCh" CheckedChanged="ConfortableNoChanged"/>
+            </StackLayout>
+
+            <Label Text="5.2 ¿Te sientes cómodo/a hablando de tus emociones con otras personas?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="ComfortableTalkingEmotionsYesCheckBox" CheckedChanged="ComfortableTalkingYesChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="ComfortableTalkingEmotionsNoCheckBox" CheckedChanged="ComfortableTalkingNoChanged"/>
+            </StackLayout>
+
+            <Label Text="5.3 ¿Recibes ayuda profesional actualmente?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="ReceivingProfessionalHelpYesCheckBox" CheckedChanged="ReceivingYesChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="ReceivingProfessionalHelpNoCheckBox" CheckedChanged="ReceivingNoChanged"/>
+            </StackLayout>
+
+            <Label Text="5.4 ¿Has utilizado alguna vez recursos de salud mental, como terapia o grupos de apoyo?"/>
+            <StackLayout Orientation="Horizontal">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="UsedMentalHealthResourcesYesCheckBox" CheckedChanged="OnUsedMentalHealthResourcesYesCheckBoxCheckedChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="UsedMentalHealthResourcesNoCheckBox" CheckedChanged="OnUsedMentalHealthResourcesNoCheckBoxCheckedChanged"/>
+                
+                <Label Text="Me gustaría"/>
+            </StackLayout>
+
+            <Label Text="5.4Q1 ¿Fue útil para ti?" x:Name="HelpfulMentalHealthResourcesLabel" IsVisible="False"/>
+            <StackLayout Orientation="Horizontal" x:Name="HelpfulMentalHealthResourcesEntry" IsVisible="False">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="HelpfulMentalHealthResourcesYCh" CheckedChanged="HelpfulYesChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="HelpfulMentalHealthResourcesNCh" CheckedChanged="HelpfulNoChanged"/>
+            </StackLayout>
+
+            <Label Text="5.4Q2 ¿Estarías dispuesto/a a buscar ayuda profesional de nuevo?" x:Name="WillingToSeekHelpAgainLabel" IsVisible="False"/>
+            <StackLayout Orientation="Horizontal" x:Name="WillingToSeekHelpAgainEntry" IsVisible="False">
+                
+                <Label Text="Sí"/>
+                <CheckBox x:Name="WillingToSeekHelpAgainYCh" CheckedChanged="WillingYesChanged"/>
+                
+                <Label Text="No"/>
+                <CheckBox x:Name="WillingToSeekHelpAgainNCh" CheckedChanged="WillingNoChanged"/>
+            </StackLayout>
+
+            <Label Text="5.4Q3 ¿Qué te detiene para buscar ayuda profesional?" x:Name="BarriersToSeekingHelpLabel" IsVisible="False"/>
+            <Entry x:Name="BarriersToSeekingHelpEntry" IsVisible="False" Placeholder="Barreras para buscar ayuda"/>
+
+            <ScrollView>
+                <StackLayout Padding="10">
+                    <!-- Título -->
+                    <Label Text="Evalúe su nivel de acuerdo con las siguientes afirmaciones" 
+               FontAttributes="Bold" 
+               FontSize="Medium" 
+               HorizontalOptions="Center"/>
+
+                    <!-- Preguntas con opciones -->
+                    <!-- Pregunta 1 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="1. Torpe o entumecido." FontSize="Medium"/>
+                        <Grid x:Name="Question1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question1" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question1" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question1" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question1" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 2 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="2. Acalorado." FontSize="Medium"/>
+                        <Grid x:Name="Question2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center" />
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center" />
+
+                            <RadioButton Grid.Column="0" GroupName="Question2" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question2" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question2" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question2" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 3 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="3. Con temblor en las piernas." FontSize="Medium"/>
+                        <Grid x:Name="Question3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center" />
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center" />
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center" />
+
+                            <RadioButton Grid.Column="0" GroupName="Question3" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question3" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question3" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question3" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 4 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="4. Incapaz de relajarse." FontSize="Medium"/>
+                        <Grid x:Name="Question4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question4" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question4" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question4" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question4" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 5 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="5. Con temor a que ocurra lo peor." FontSize="Medium"/>
+                        <Grid x:Name="Question5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question5" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question5" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question5" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question5" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 6 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="6. Mareado, o que se le va la cabeza." FontSize="Medium"/>
+                        <Grid x:Name="Question6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question6" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question6" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question6" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question6" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 7 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="7. Con latidos del corazón fuertes y acelerados." FontSize="Medium"/>
+                        <Grid x:Name="Question7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question7" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question7" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question7" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question7" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 8 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="8. Inestable." FontSize="Medium"/>
+                        <Grid x:Name="Question8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question8" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question8" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question8" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question8" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 9 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="9. Atemorizado o asustado." FontSize="Medium"/>
+                        <Grid x:Name="Question9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question9" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question9" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question9" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question9" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 10 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="10. Nervioso." FontSize="Medium"/>
+                        <Grid x:Name="Question10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question10" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question10" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question10" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question10" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 11 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="11. Con sensación de bloqueo." FontSize="Medium"/>
+                        <Grid x:Name="Question11">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question11" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question11" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question11" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question11" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 12 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="12. Con temblores en las manos." FontSize="Medium"/>
+                        <Grid x:Name="Question12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question12" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question12" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question12" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question12" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 13 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="13. Inquieto, inseguro." FontSize="Medium"/>
+                        <Grid x:Name="Question13">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question13" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question13" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question13" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question13" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 14 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="14. Con miedo a perder el control." FontSize="Medium"/>
+                        <Grid x:Name="Question14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question14" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question14" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question14" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question14" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 15 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="15. Con sensación de ahogo." FontSize="Medium"/>
+                        <Grid x:Name="Question15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question15" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question15" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question15" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question15" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 16 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="16. Con temor a morir." FontSize="Medium"/>
+                        <Grid x:Name="Question16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question16" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question16" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question16" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question16" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 17 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="17. Con miedo." FontSize="Medium"/>
+                        <Grid x:Name="Question17">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question17" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question17" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question17" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question17" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 18 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="18. Con problemas digestivos." FontSize="Medium"/>
+                        <Grid x:Name="Question18">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question18" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question18" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question18" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question18" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 19 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="19. Con desvanecimientos." FontSize="Medium"/>
+                        <Grid x:Name="Question19">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question19" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question19" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question19" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question19" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 20 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="20. Con rubor facial." FontSize="Medium"/>
+                        <Grid x:Name="Question20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question20" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question20" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question20" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question20" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Pregunta 21 -->
+                    <StackLayout Margin="0,10">
+                        <Label Text="21. Con sudores, fríos o calientes." FontSize="Medium"/>
+                        <Grid x:Name="Question21">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="12" Grid.Column="0" Text="Nada" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="1" Text="Poco" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="2" Text="Algo" HorizontalTextAlignment="Center"/>
+                            <Label FontSize="12" Grid.Column="3" Text="Mucho" HorizontalTextAlignment="Center"/>
+
+                            <RadioButton Grid.Column="0" GroupName="Question21" HorizontalOptions="Center" Margin="0,10,0,0" Value="0"/>
+                            <RadioButton Grid.Column="1" GroupName="Question21" HorizontalOptions="Center" Margin="0,10,0,0" Value="1"/>
+                            <RadioButton Grid.Column="2" GroupName="Question21" HorizontalOptions="Center" Margin="0,10,0,0" Value="2"/>
+                            <RadioButton Grid.Column="3" GroupName="Question21" HorizontalOptions="Center" Margin="0,10,0,0" Value="3"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <!-- Botón de Enviar -->
+                </StackLayout>
+            </ScrollView>
+
+
+            <Label Text="5.5 ¿Qué tipo de apoyo crees que te sería útil en este momento? (por ejemplo, hablar con alguien, técnicas de relajación, recursos online):"/>
+            <Editor x:Name="HelpfulSupportTypesEditor" Placeholder="Tipos de apoyo útiles"/>
+
+            <!-- VI. Expectativas y Metas -->
+            <Label Text="VI. Expectativas y Metas" FontAttributes="Bold" FontSize="Small"/>
+            <Label Text="6.1 ¿Qué esperas lograr al utilizar esta aplicación?"/>
+            <Editor x:Name="ExpectationsEditor" Placeholder="Expectativas"/>
+
+            <Label Text="6.2 ¿Cuáles son tus principales objetivos para mejorar tu bienestar emocional?"/>
+            <Editor x:Name="EmotionalWellbeingGoalsEditor" Placeholder="Objetivos de bienestar emocional"/>
+
+            <Button Text="Guardar Respuestas" Clicked="OnSaveResponsesClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
